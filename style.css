@@ -533,3 +533,38 @@
     margin-top:auto; padding-top:14px; font-family:'Space Mono',monospace;
     font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-secondary); opacity:.7;
   }
+
+  /* ── Cards de projeto padronizados ──
+     Todas as capas têm a mesma altura e o mesmo mosaico: uma imagem grande
+     à esquerda e duas menores à direita. Imagens extras ficam ocultas na
+     capa, mas continuam no lightbox ao clicar. */
+  .projects-grid { grid-template-columns:repeat(3, minmax(0, 1fr)) !important; align-items:stretch; }
+  .project-thumb[data-gallery] {
+    height:240px !important; aspect-ratio:auto !important;
+    display:grid !important; gap:3px !important; padding:3px !important;
+    grid-template-columns:2fr 1fr !important; grid-template-rows:1fr 1fr !important;
+    background:var(--bg-card) !important;
+  }
+  .project-thumb[data-gallery] > * {
+    width:100% !important; height:100% !important; min-height:0; min-width:0;
+    grid-column:auto !important; grid-row:auto !important; overflow:hidden;
+  }
+  .project-thumb[data-gallery] > :first-child { grid-column:1 !important; grid-row:1 / span 2 !important; }
+  .project-thumb[data-gallery] > :nth-child(n+4) { display:none !important; }
+  .project-thumb[data-gallery] img { width:100% !important; height:100% !important; object-fit:cover !important; object-position:center top; }
+  /* Capa com uma imagem só */
+  .project-thumb[data-gallery]:has(> :only-child) { grid-template-columns:1fr !important; }
+  /* Capa com duas imagens: lado a lado */
+  .project-thumb[data-gallery]:has(> :nth-child(2):last-child) { grid-template-columns:1fr 1fr !important; }
+  .project-thumb[data-gallery]:has(> :nth-child(2):last-child) > * { grid-row:1 / span 2 !important; }
+  .project-thumb[data-gallery]:has(> :nth-child(2):last-child) > :nth-child(2) { grid-column:2 !important; }
+  .project-name { min-height:0; }
+
+  @media (max-width: 1100px) {
+    .projects-grid { grid-template-columns:repeat(2, minmax(0, 1fr)) !important; }
+  }
+  @media (max-width: 768px) {
+    .projects-grid { grid-template-columns:1fr !important; }
+    .project-thumb[data-gallery] { height:200px !important; }
+    section#projects > div { padding:64px 16px 48px !important; }
+  }
