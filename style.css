@@ -519,3 +519,17 @@
 
 @keyframes lbFadeIn { from{opacity:0} to{opacity:1} }
 @keyframes lbZoomIn { from{opacity:0;transform:scale(0.88)} to{opacity:1;transform:scale(1)} }
+
+  /* Links e notas dos cards de projeto */
+  .project-links { display:flex; gap:10px; margin-top:auto; padding-top:14px; flex-wrap:wrap; }
+  .project-link {
+    display:inline-block; font-family:'Space Mono',monospace; font-size:11px;
+    letter-spacing:0.08em; text-transform:uppercase; text-decoration:none;
+    color:var(--accent); border:1px solid rgba(0,212,255,0.35);
+    padding:6px 12px; border-radius:2px; transition:background .2s, color .2s;
+  }
+  .project-link:hover { background:rgba(0,212,255,0.12); }
+  .project-note {
+    margin-top:auto; padding-top:14px; font-family:'Space Mono',monospace;
+    font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-secondary); opacity:.7;
+  }
