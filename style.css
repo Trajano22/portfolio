@@ -568,3 +568,5 @@
     .project-thumb[data-gallery] { height:200px !important; }
     section#projects > div { padding:64px 16px 48px !important; }
   }
+
+  .projects-cta { flex-wrap: wrap; }
